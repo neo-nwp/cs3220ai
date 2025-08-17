@@ -33,7 +33,7 @@ def setGraphData(df):
     #values = [node_sizes[node] for node in nodes]
     #values=[int(item) for item in values]
     #values = [int(node_sizes.loc[node_sizes.index==node]) for node in nodes]
-    (s.index == 'cherry') 
+    
     df["edge_titles"]=df["N_fligths"].apply(makeEdgeTitle)
     # extract the edges between airports
     edges = df.loc[:,["ORIGIN_AIRPORT", "DESTINATION_AIRPORT", "edge_titles"]].values.tolist()
