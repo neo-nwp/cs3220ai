@@ -30,8 +30,8 @@ def setGraphData(df):
                   *df['DESTINATION_AIRPORT']
                  ]))
     # extract the size of each airport
-    values = [node_sizes[node] for node in nodes]
-    values=[int(item) for item in values]
+    #values = [node_sizes[node] for node in nodes]
+    #values=[int(item) for item in values]
     #values = [int(node_sizes.loc[node_sizes.index==node]) for node in nodes]
     (s.index == 'cherry') 
     df["edge_titles"]=df["N_fligths"].apply(makeEdgeTitle)
@@ -39,7 +39,7 @@ def setGraphData(df):
     edges = df.loc[:,["ORIGIN_AIRPORT", "DESTINATION_AIRPORT", "edge_titles"]].values.tolist()
     edges_width=df.Perc.values.tolist()
     
-    return nodes,values,edges,edges_width
+    return nodes,edges,edges_width
     
     
 
@@ -61,7 +61,7 @@ def buildGraph(nodes,values,edges,edges_width):
 def main():
     flights_df=data_load()
     df_between_airports=data_proc(flights_df)
-    nodes,values,edges,edges_width=setGraphData(df_between_airports)
+    nodes,edges,edges_width=setGraphData(df_between_airports)
     
     # Set header title
     st.title('Network Graph Visualization - lab1. Example')
