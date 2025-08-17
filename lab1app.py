@@ -6,7 +6,7 @@ import networkx as nx
 from pyvis.network import Network
 
 def data_load():
-    flights_df = pd.read_csv("data/flights.csv", usecols = ["ORIGIN_AIRPORT", "DESTINATION_AIRPORT","YEAR"])
+    flights_df = pd.read_csv("data/flights_df_1000.csv", usecols = ["ORIGIN_AIRPORT", "DESTINATION_AIRPORT","YEAR"])
     print(f"Original dataset size: {flights_df.size}") #this dataset is quite big 
     flights_df1=flights_df[(flights_df.DESTINATION_AIRPORT.str.len()<=3)&(flights_df.ORIGIN_AIRPORT.str.len()<=3)]
     print(f"Working dataset size: {flights_df1.size}") #this dataset is quite big
