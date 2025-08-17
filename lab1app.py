@@ -43,7 +43,7 @@ def setGraphData(df):
     
     
 
-def buildGraph(nodes,values,edges,edges_width):
+def buildGraph(nodes,edges,edges_width):
     netFlights = Network(heading="Lab1. Building Interactive Network of flights",
                 bgcolor ="#242020",
                 font_color = "white",
@@ -52,10 +52,11 @@ def buildGraph(nodes,values,edges,edges_width):
                 directed = True,
                 filter_menu=True)
     # add the nodes, the value is to set the size of the nodes
-    netFlights.add_nodes(nodes, value = values)
+    netFlights.add_nodes(nodes)
     # add the edges
     netFlights.add_edges(edges)
-    netFlights.show("L1_Network_of_flights.html", notebook=False)
+    return netFlights
+    #netFlights.show("L1_Network_of_flights.html", notebook=False)
     
 
 def main():
@@ -77,6 +78,16 @@ def main():
         df_select = df_between_airports.loc[df_between_airports['ORIGIN_AIRPORT'].isin(selected_origin_airports)]
         df_select = df_select.reset_index(drop=True)
         st.dataframe(df_select, hide_index=True)
+        nodes,edges,edges_width=setGraphData(df_select)
+        flight_net=buildGraph(nodes,edges,edges_width)
+        flight_net.save_graph('L1_Network_of_flights.html')
+        HtmlFile = open(f'L1_Network_of_flights.html', 'r', encoding='utf-8')
+        # Load HTML file in HTML component for display on Streamlit page
+        components.html(HtmlFile.read(), height=435)
+        
+        
+
+
         
 if __name__ == '__main__':
     main()
