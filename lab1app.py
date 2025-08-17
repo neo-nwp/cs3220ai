@@ -83,7 +83,7 @@ def main():
         flight_net.save_graph('L1_Network_of_flights.html')
         HtmlFile = open(f'L1_Network_of_flights.html', 'r', encoding='utf-8')
         # Load HTML file in HTML component for display on Streamlit page
-        components.html(HtmlFile.read(), height=435)
+        components.html(HtmlFile.read(), height=1000)
         
         
 
