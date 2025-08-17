@@ -84,7 +84,7 @@ def main():
         st.dataframe(df_select, hide_index=True)
         nodes,edges,edges_width=setGraphData(df_select)
         st.text(nodes)
-        #flight_net=buildGraph(nodes,edges,edges_width)
+        buildGraph(nodes,edges,edges_width)
         #flight_net.save_graph('L1_Network_of_flights.html')
         #HtmlFile = open(f'L1_Network_of_flights.html', 'r', encoding='utf-8')
         # Load HTML file in HTML component for display on Streamlit page
