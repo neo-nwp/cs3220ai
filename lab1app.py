@@ -6,7 +6,7 @@ import networkx as nx
 from pyvis.network import Network
 
 def data_load():
-    flights_df = pd.read_csv("data/flights.csv", usecols = ["ORIGIN_AIRPORT", "DESTINATION_AIRPORT","YEAR"])
+    flights_df = pd.read_csv("data/flights_df_1000.csv", usecols = ["ORIGIN_AIRPORT", "DESTINATION_AIRPORT","YEAR"])
     print(f"Original dataset size: {flights_df.size}") #this dataset is quite big 
     flights_df1=flights_df[(flights_df.DESTINATION_AIRPORT.str.len()<=3)&(flights_df.ORIGIN_AIRPORT.str.len()<=3)]
     print(f"Working dataset size: {flights_df1.size}") #this dataset is quite big
@@ -30,17 +30,20 @@ def setGraphData(df):
                   *df['DESTINATION_AIRPORT']
                  ]))
     # extract the size of each airport
-    values = [int(node_sizes[node]) for node in nodes]
+    #values = [node_sizes[node] for node in nodes]
+    #values=[int(item) for item in values]
+    #values = [int(node_sizes.loc[node_sizes.index==node]) for node in nodes]
+    
     df["edge_titles"]=df["N_fligths"].apply(makeEdgeTitle)
     # extract the edges between airports
     edges = df.loc[:,["ORIGIN_AIRPORT", "DESTINATION_AIRPORT", "edge_titles"]].values.tolist()
     edges_width=df.Perc.values.tolist()
     
-    return nodes,values,edges,edges_width
+    return nodes,edges,edges_width
     
     
 
-def buildGraph(nodes,values,edges,edges_width):
+def buildGraph(nodes,edges,edges_width):
     netFlights = Network(heading="Lab1. Building Interactive Network of flights",
                 bgcolor ="#242020",
                 font_color = "white",
@@ -49,16 +52,21 @@ def buildGraph(nodes,values,edges,edges_width):
                 directed = True,
                 filter_menu=True)
     # add the nodes, the value is to set the size of the nodes
-    netFlights.add_nodes(nodes, value = values)
+    netFlights.add_nodes(nodes)
     # add the edges
     netFlights.add_edges(edges)
-    netFlights.show("L1_Network_of_flights.html", notebook=False)
+    netFlights.save_graph('L1_Network_of_flights.html')
+    HtmlFile = open(f'L1_Network_of_flights.html', 'r', encoding='utf-8')
+    # Load HTML file in HTML component for display on Streamlit page
+    components.html(HtmlFile.read(), height=1000)
+    #return netFlights
+    #netFlights.show("L1_Network_of_flights.html", notebook=False)
     
 
 def main():
     flights_df=data_load()
     df_between_airports=data_proc(flights_df)
-    nodes,values,edges,edges_width=setGraphData(df_between_airports)
+    nodes,edges,edges_width=setGraphData(df_between_airports)
     
     # Set header title
     st.title('Network Graph Visualization - lab1. Example')
@@ -74,6 +82,17 @@ def main():
         df_select = flights_df.loc[flights_df['ORIGIN_AIRPORT'].isin(selected_origin_airports)]
         df_select = df_select.reset_index(drop=True)
         st.dataframe(df_select, hide_index=True)
+        nodes,edges,edges_width=setGraphData(df_select)
+        st.text(nodes)
+        buildGraph(nodes,edges,edges_width)
+        #flight_net.save_graph('L1_Network_of_flights.html')
+        #HtmlFile = open(f'L1_Network_of_flights.html', 'r', encoding='utf-8')
+        # Load HTML file in HTML component for display on Streamlit page
+        #components.html(HtmlFile.read(), height=1000)
+        
+        
+
+
         
 if __name__ == '__main__':
     main()
