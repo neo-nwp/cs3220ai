@@ -2,8 +2,8 @@
 import streamlit as st
 import streamlit.components.v1 as components #to display the HTML code
 import pandas as pd
-import networkx as nx
-from pyvis.network import Network
+import networkx as nx #Networkx for creating graph data
+from pyvis.network import Network #to create the graph as an interactive html object
 
 def data_load():
     flights_df = pd.read_csv("data/flights_df_1000.csv", usecols = ["ORIGIN_AIRPORT", "DESTINATION_AIRPORT","YEAR"])
@@ -24,7 +24,7 @@ def makeEdgeTitle(x):
     return "N_flights: "+str(x)
 
 def setGraphData(df):
-    node_sizes=df.groupby("ORIGIN_AIRPORT").count()["N_fligths"]
+    #node_sizes=df.groupby("ORIGIN_AIRPORT").count()["N_fligths"]
     # get all the nodes from the two columns
     nodes = list(set([*df['ORIGIN_AIRPORT'], 
                   *df['DESTINATION_AIRPORT']
@@ -36,42 +36,49 @@ def setGraphData(df):
     
     df["edge_titles"]=df["N_fligths"].apply(makeEdgeTitle)
     # extract the edges between airports
-    edges = df.loc[:,["ORIGIN_AIRPORT", "DESTINATION_AIRPORT", "edge_titles"]].values.tolist()
-    edges_width=df.Perc.values.tolist()
+    edges = df.loc[:,["ORIGIN_AIRPORT", "DESTINATION_AIRPORT"]].values.tolist()   
     
-    return nodes,edges,edges_width
+    return nodes,edges
     
     
 
-def buildGraph(nodes,edges,edges_width):
-    netFlights = Network(heading="Lab1. Building Interactive Network of flights",
+def buildGraph(nodes,edges,selected_origin_airports):
+    netFlights = Network(
                 bgcolor ="#242020",
                 font_color = "white",
                 height = "1000px",
                 width = "100%",
-                directed = True,
-                filter_menu=True)
-    # add the nodes, the value is to set the size of the nodes
-    netFlights.add_nodes(nodes)
+                directed = True)
+    
+    # initialize graph
+    g = nx.DiGraph()
+    # add the nodes
+    g.add_nodes_from(nodes) # !!! not netFlights.add_nodes(nodes)
+    print(g.nodes)
     # add the edges
-    netFlights.add_edges(edges)
+    g.add_edges_from(edges) # !!! not netFlights.add_edges(edges)
+    print(g.edges)
+    # generate the graph
+    netFlights.from_nx(g)    
+    
     netFlights.save_graph('L1_Network_of_flights.html')
+    st.header(f'Lab1. Building Interactive Network of flights from {selected_origin_airports}')
     HtmlFile = open(f'L1_Network_of_flights.html', 'r', encoding='utf-8')
     # Load HTML file in HTML component for display on Streamlit page
-    components.html(HtmlFile.read(), height=1000)
-    #return netFlights
-    #netFlights.show("L1_Network_of_flights.html", notebook=False)
+    components.html(HtmlFile.read(), height = 1200,width=1000)
+    
     
 
 def main():
     flights_df=data_load()
     df_between_airports=data_proc(flights_df)
-    nodes,edges,edges_width=setGraphData(df_between_airports)
+    #nodes,edges=setGraphData(df_between_airports)
     
     # Set header title
     st.title('Network Graph Visualization - lab1. Example')
     origin_airports=df_between_airports['ORIGIN_AIRPORT'].unique().tolist()
     origin_airports.sort()
+    
     # Implement multiselect dropdown menu for option selection
     selected_origin_airports = st.multiselect('Select origin airports to visualize', origin_airports)
     # Set info message on initial site load
@@ -79,12 +86,12 @@ def main():
         st.text('Please choose at least 1 origin airport to get started')
         # Create network graph when user selects >= 1 item
     else:
-        df_select = flights_df.loc[flights_df['ORIGIN_AIRPORT'].isin(selected_origin_airports)]
+        df_select = df_between_airports.loc[df_between_airports['ORIGIN_AIRPORT'].isin(selected_origin_airports)]
         df_select = df_select.reset_index(drop=True)
-        st.dataframe(df_select, hide_index=True)
-        nodes,edges,edges_width=setGraphData(df_select)
-        st.text(nodes)
-        buildGraph(nodes,edges,edges_width)
+        st.dataframe(df_select.loc[:, ['ORIGIN_AIRPORT', 'DESTINATION_AIRPORT', 'N_fligths']], hide_index=True)
+        nodes,edges=setGraphData(df_select)
+        #st.text(nodes)
+        buildGraph(nodes,edges,selected_origin_airports)
         #flight_net.save_graph('L1_Network_of_flights.html')
         #HtmlFile = open(f'L1_Network_of_flights.html', 'r', encoding='utf-8')
         # Load HTML file in HTML component for display on Streamlit page
