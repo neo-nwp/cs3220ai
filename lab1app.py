@@ -71,7 +71,7 @@ def main():
         st.text('Please choose at least 1 origin airport to get started')
         # Create network graph when user selects >= 1 item
     else:
-        df_select = df_between_airports.loc[df_between_airports['ORIGIN_AIRPORT'].isin(selected_origin_airports)]
+        df_select = flights_df.loc[flights_df['ORIGIN_AIRPORT'].isin(selected_origin_airports)]
         df_select = df_select.reset_index(drop=True)
         st.dataframe(df_select, hide_index=True)
         
