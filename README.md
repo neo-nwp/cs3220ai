@@ -10,6 +10,8 @@ This requires a bit of setup.
 
 1. Create a Virtual Environment for your Project in VSCode:
    1.1 Open a new VSCode session
+   <img width="909" height="548" alt="image" src="https://github.com/user-attachments/assets/f9528753-8772-4ee9-8d53-955e0e96f456" />
+
    1.2 Open the Project in VSCode
      - clone a repository (you will be provided with a link) & open it in your workspace
    OR
