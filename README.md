@@ -24,12 +24,19 @@ This requires a bit of setup.
 
    OR
      - download the assignment zip-file and unpack its content with a starter code(s) and a notebook(s) in your working folder
+     - 
     1.3 Create a Python Virtual Environment
+       
     1.4 Activate the virtual environment
+   
     1.5 Install your desired dependencies
+   
     1.6 Save Dependencies to requirements.txt (optional)
+   
     1.7 Select Python Interpreter
+   
     1.8 Creating a .gitignore File
+   
        Add the following lines to your .gitignore file:
           .venv/
           .env
