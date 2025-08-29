@@ -14,7 +14,9 @@ This requires a bit of setup.
    
    1.2 Open the Project in VSCode
      - clone a repository (you will be provided with a link) & open it in your workspace
-     - <img width="1048" height="131" alt="image" src="https://github.com/user-attachments/assets/5c7d7653-5462-457e-a35f-cb0c409e8a94" />
+       <img width="1048" height="131" alt="image" src="https://github.com/user-attachments/assets/5c7d7653-5462-457e-a35f-cb0c409e8a94" />
+       <img width="1396" height="787" alt="image" src="https://github.com/user-attachments/assets/3a0f0cae-38cf-464d-90b6-dfb65e23b2f3" />
+
 
    OR
      - download the assignment zip-file and unpack its content with a starter code(s) and a notebook(s) in your working folder
