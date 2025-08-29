@@ -11,9 +11,11 @@ This requires a bit of setup.
 1. Create a Virtual Environment for your Project in VSCode:
    1.1 Open a new VSCode session
    <img width="909" height="548" alt="image" src="https://github.com/user-attachments/assets/f9528753-8772-4ee9-8d53-955e0e96f456" />
-
+   
    1.2 Open the Project in VSCode
      - clone a repository (you will be provided with a link) & open it in your workspace
+     - <img width="1048" height="131" alt="image" src="https://github.com/user-attachments/assets/5c7d7653-5462-457e-a35f-cb0c409e8a94" />
+
    OR
      - download the assignment zip-file and unpack its content with a starter code(s) and a notebook(s) in your working folder
     1.3 Create a Python Virtual Environment
