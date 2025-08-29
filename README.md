@@ -43,6 +43,14 @@ This requires a bit of setup.
           __pycache__/
           *.pyc
     
-3. 
+3. Complete your project(Working With Branches!!!):
+   3.1 Create a new branch (for ex. cs3220_A1) and switch to it
+   3.2 Make Changes and Commit
+   3.3 Push Changes to Your Branch to !!!Your!!! Remote Repo
+   
+4. Pushing Changes to GitHub (Working With Branches!!!):
+     
+   
+6. 
 
 
