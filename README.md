@@ -17,7 +17,8 @@ This requires a bit of setup.
        <img width="1048" height="131" alt="image" src="https://github.com/user-attachments/assets/5c7d7653-5462-457e-a35f-cb0c409e8a94" />
        <img width="1396" height="787" alt="image" src="https://github.com/user-attachments/assets/3a0f0cae-38cf-464d-90b6-dfb65e23b2f3" />
        <img width="545" height="213" alt="image" src="https://github.com/user-attachments/assets/ec358bfe-1d45-45be-9fb2-fe9185e675f3" />
-       <img width="944" height="520" alt="image" src="https://github.com/user-attachments/assets/8e7b29f2-0b8b-44d2-b885-ee790c54c12f" />
+       <img width="976" height="425" alt="image" src="https://github.com/user-attachments/assets/7e0079ab-ad8d-4bfb-9493-7cf24c72aa50" />
+
 
 
 
