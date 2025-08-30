@@ -43,10 +43,13 @@ This requires a bit of setup.
           __pycache__/
           *.pyc
     
-3. Complete your project(Working With Branches!!!):
-   3.1 Create a new branch (for ex. cs3220_A1) and switch to it
-   3.2 Make Changes and Commit
-   3.3 Add Your Remote Repo - only once (or Push to your remote) (for ex., https://github.com/Hanna2110/AI_TestPractice.git)
+2. Complete your project(Working With Branches!!!):
+   
+   2.1 Create a new branch (for ex. cs3220_A1) and switch to it
+   
+   2.2 Make Changes and Commit
+   
+   2.3 Add Your Remote Repo - only once (or Push to your remote) (for ex., https://github.com/Hanna2110/AI_TestPractice.git)
    
 
 
