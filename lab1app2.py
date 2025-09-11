@@ -21,6 +21,8 @@ def data_load(file_name = "data/game-of-thrones-characters-groups.json"):
     return json_data
 
 
+
+
 def showHouses(GameOfThronesHousesObj):
     st.write("Game Of Thrones Houses:")
     markdown_list = ""
