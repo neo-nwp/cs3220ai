@@ -1,4 +1,4 @@
-Welcome to the CS3220 Course!
+Welcome to the CS3220 Course!!!
 
 Each assignment will consist a notebook file(s) (with a .ipynb extension) and might (or not) consist several normal Python files (with .py extension).
 The notebooks will serve as the driver of the assignments.
