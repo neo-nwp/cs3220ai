@@ -51,6 +51,9 @@ This requires a bit of setup.
    2.2 Make Changes and Commit
    
    2.3 Add Your Remote Repo - only once (or Push to your remote) (for ex., https://github.com/Hanna2110/AI_TestPractice.git)
+
+
+   [![Video Tutorial](https://img.youtube.com/vi/YBY1TM7Lq-g/0.jpg)](https://www.youtube.com/watch?v=YBY1TM7Lq-g)
    
 
 
