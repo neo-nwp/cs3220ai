@@ -2,6 +2,8 @@ from src.agentPrograms import *
 from src.agentClass import Agent
 
 from src.rules import vacuumRules
+from src.rules import actionList
+from src.rules import table
 
 
 
