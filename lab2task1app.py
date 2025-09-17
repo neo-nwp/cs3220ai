@@ -33,7 +33,16 @@ def main():
     else:
         st.text("RandomVacuumAgent is located in the universe!!!")
         
-    st.image(image, caption="Agent is here", use_column_width=True)
+    st.image(image, caption="Agent is here", width="content")
+    
+    if st.button("Run One Agent's Step"):
+        e1.step()
+        st.text("State of the Environment: {}.".format(e1.status))
+        st.text("RandomVacuumAgent is located at {}.".format(a1.location))
+        
+                
+            
+    
     
     
     
