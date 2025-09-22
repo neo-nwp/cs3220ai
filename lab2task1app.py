@@ -63,10 +63,10 @@ def main():
     st.image(image, caption="Agent is here", width="content")
     
     if st.button("Run One Agent's Step"):
-        if e1.is_agent_alive():
+        if e1.is_agent_alive(a1):
             e1.step()
-            st.text("State of the Environment: {}.".format(e1.status))
             st.success("RandomVacuumAgent is located at {}.".format(a1.location))
+            st.info("Current Agent performance: {}.".format(a1.performance))
         else:
             st.error("Agent in location {} and it is dead.".format(a1.location))
         st.info("State of the Environment: {}.".format(e1.status))
