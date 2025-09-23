@@ -63,6 +63,7 @@ def main():
     st.image(image, caption="Agent is here", width="content")
     
     if st.button("Run One Agent's Step"):
+        st.text(e1.is_agent_alive(a1))
         if e1.is_agent_alive(a1):
             e1.step()
             st.success("RandomVacuumAgent is located at {}.".format(a1.location))
