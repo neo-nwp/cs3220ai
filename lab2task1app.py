@@ -88,13 +88,15 @@ def main():
         st.info("Agent in location {}.".format(a1.location))
             
         st.image(image, caption="Agent is here", width="content")
+        
+        drawBtn(e1,a1)
     
             
         
     if st.session_state["clicked"]:
         st.success("Agent Step Done!")
         
-    drawBtn(e1,a1)
+    
     
     
         
