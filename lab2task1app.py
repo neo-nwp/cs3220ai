@@ -40,6 +40,26 @@ def getImg (agentLoc, envState):
             image = Image.open("imgs/a_dirty__b_dirty_Agent.jpg")
     
     return image
+
+def drawBtn(e,a):
+    option= [e,a]
+    st.button("Run One Agent's Step", on_click= AgentStep, args= [option])
+    
+def AgentStep(opt):
+    st.session_state["clicked"] = True
+    e,a= opt[0],opt[1]
+    
+    if e.is_agent_alive(a):
+        stepActs=e.step()
+        st.info(" Agent decided to do: {}.".format(",".join(stepActs)))
+        st.success("RandomVacuumAgent is located at {} now.".format(a.location))
+        st.info("Current Agent performance: {}.".format(a.performance))
+    else:
+        st.error("Agent in location {} and it is dead.".format(a.location))
+        
+    
+    
+
         
     
 
@@ -63,18 +83,17 @@ def main():
         
     st.image(image, caption="Agent is here", width="content")
     
-    if st.button("Run One Agent's Step"):
-        st.text(e1.is_agent_alive(a1))
-        if e1.is_agent_alive(a1):
-            stepActs=e1.step()
-            st.info(" Agent decided to do: {}.".format(",".join(stepActs)))
-            st.success("RandomVacuumAgent is located at {} now.".format(a1.location))
-            st.info("Current Agent performance: {}.".format(a1.performance))
-        else:
-            st.error("Agent in location {} and it is dead.".format(a1.location))
-        st.info("State of the Environment: {}.".format(e1.status))
-        image=getImg(a1.location, e1.status)
-        st.image(image, caption="Agent is here NOW", width="content") 
+    if "clicked" not in st.session_state:
+        st.session_state["clicked"] = False
+        
+        
+    if st.session_state["clicked"]:
+        st.success("Agent Step Done!")
+        
+    drawBtn(e1,a1)
+    
+    
+        
         
         
                 
