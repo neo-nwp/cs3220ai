@@ -73,6 +73,9 @@ def main():
         else:
             st.error("Agent in location {} and it is dead.".format(a1.location))
         st.info("State of the Environment: {}.".format(e1.status))
+        image=getImg(a1.location, e1.status)
+        st.image(image, caption="Agent is here NOW", width="content") 
+        
         
                 
             
