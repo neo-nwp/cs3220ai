@@ -77,7 +77,7 @@ def main():
     if not st.session_state["clicked"]:
         # Set header title
         st.title('Simple Agents - lab2. Example1')
-        st.info("Initial Env.")
+        st.header("_Initial Env._", divider=True)
         
         a1=RandomVacuumAgent()
         st.info(f"{a1} has the initial performance: {a1.performance}")
