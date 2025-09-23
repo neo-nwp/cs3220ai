@@ -39,7 +39,10 @@ class TrivialVacuumEnvironment(Environment):
         elif action == 'Suck':
             if self.status[agent.location] == 'Dirty':
                 agent.performance += 10
-            self.status[agent.location] = 'Clean'
+                self.status[agent.location] = 'Clean'
+            else:
+              agent.performance -= 1
+            self.update_agent_alive(agent)
 
   def default_location(self, thing):
         """Agents start in either location at random."""
