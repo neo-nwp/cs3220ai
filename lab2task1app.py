@@ -59,7 +59,7 @@ def main():
     e1.add_thing(a1)
     
     image=getImg(a1.location, e1.status)  
-    st.info("Agent in location {}.".format(e1.a1.location))
+    st.info("Agent in location {}.".format(a1.location))
         
     st.image(image, caption="Agent is here", width="content")
     
