@@ -98,7 +98,7 @@ def main():
             
         
     if st.session_state["clicked"]:
-        st.success("Agent Step Done!")
+        st.warning("Agent Step Done!")
         
     
     
