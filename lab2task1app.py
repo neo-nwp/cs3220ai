@@ -59,14 +59,16 @@ def main():
     e1.add_thing(a1)
     
     image=getImg(a1.location, e1.status)  
+    st.info("Agent in location {}.".format(e1.a1.location))
         
     st.image(image, caption="Agent is here", width="content")
     
     if st.button("Run One Agent's Step"):
         st.text(e1.is_agent_alive(a1))
         if e1.is_agent_alive(a1):
-            e1.step()
-            st.success("RandomVacuumAgent is located at {}.".format(a1.location))
+            stepActs=e1.step()
+            st.info(" Agent decided to do: {}.".format(",".join(stepActs)))
+            st.success("RandomVacuumAgent is located at {} now.".format(a1.location))
             st.info("Current Agent performance: {}.".format(a1.performance))
         else:
             st.error("Agent in location {} and it is dead.".format(a1.location))

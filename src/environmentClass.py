@@ -46,6 +46,7 @@ class Environment:
                 self.execute_action(agent, action)
         else:
           print("There is no one here who could work...")
+        return actions
 
   def run(self, steps=10):
         #Run the Environment for given number of time steps.
