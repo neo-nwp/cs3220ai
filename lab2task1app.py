@@ -69,23 +69,27 @@ def main():
     # Set header title
     st.title('Simple Agents - lab2. Example1')
     
-    a1=RandomVacuumAgent()
-    st.info(f"{a1} has the initial performance: {a1.performance}")
-    
-    e1 = TrivialVacuumEnvironment()
-    # Check the initial state of the environment
-    st.info("State of the Environment: {}.".format(e1.status))
-    
-    e1.add_thing(a1)
-    
-    image=getImg(a1.location, e1.status)  
-    st.info("Agent in location {}.".format(a1.location))
-        
-    st.image(image, caption="Agent is here", width="content")
-    
     if "clicked" not in st.session_state:
         st.session_state["clicked"] = False
         
+    if not st.session_state["clicked"]:
+        st.info("Initial Env.")
+        
+        a1=RandomVacuumAgent()
+        st.info(f"{a1} has the initial performance: {a1.performance}")
+        
+        e1 = TrivialVacuumEnvironment()
+        # Check the initial state of the environment
+        st.info("State of the Environment: {}.".format(e1.status))
+        
+        e1.add_thing(a1)
+        
+        image=getImg(a1.location, e1.status)  
+        st.info("Agent in location {}.".format(a1.location))
+            
+        st.image(image, caption="Agent is here", width="content")
+    
+            
         
     if st.session_state["clicked"]:
         st.success("Agent Step Done!")
