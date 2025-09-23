@@ -50,7 +50,7 @@ def main():
     st.title('Simple Agents - lab2. Example1')
     
     a1=RandomVacuumAgent()
-    st.text(f"{a1} has the initial performance: {a1.performance}")
+    st.info(f"{a1} has the initial performance: {a1.performance}")
     
     e1 = TrivialVacuumEnvironment()
     # Check the initial state of the environment
