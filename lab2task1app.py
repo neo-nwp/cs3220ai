@@ -51,11 +51,15 @@ def AgentStep(opt):
     
     if e.is_agent_alive(a):
         stepActs=e.step()
-        st.info(" Agent decided to do: {}.".format(",".join(stepActs)))
+        st.success(" Agent decided to do: {}.".format(",".join(stepActs)))
         st.success("RandomVacuumAgent is located at {} now.".format(a.location))
         st.info("Current Agent performance: {}.".format(a.performance))
+        st.info("State of the Environment: {}.".format(e.status))
     else:
         st.error("Agent in location {} and it is dead.".format(a.location))
+        
+    image=getImg(a.location, e.status)
+    st.image(image, caption="Agent is here", width="content")
         
     
     
@@ -66,13 +70,13 @@ def AgentStep(opt):
 
 
 def main():
-    # Set header title
-    st.title('Simple Agents - lab2. Example1')
-    
+        
     if "clicked" not in st.session_state:
         st.session_state["clicked"] = False
         
     if not st.session_state["clicked"]:
+        # Set header title
+        st.title('Simple Agents - lab2. Example1')
         st.info("Initial Env.")
         
         a1=RandomVacuumAgent()
