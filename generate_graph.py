@@ -40,7 +40,6 @@ class GameOfThronesGraph:
 def create_interactive_graph():
     """Loads data, processes it with classes, and generates an HTML graph."""
     
-    # Updated file path to match your folder structure
     json_path = "data/game-of-thrones-characters-groups.json"
     if not os.path.exists(json_path):
         print(f"Error: Data file not found at {json_path}")
