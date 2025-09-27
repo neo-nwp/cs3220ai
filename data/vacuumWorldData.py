@@ -34,71 +34,71 @@ vacuumWorld = (dict(
     CCR=dict(Suck=CCR, Left=CCL, Right=CCR)
 ))
 
-vacuumWorldDict={
-  DDL:
-    {
-      DDL:agentActions[1],
-      DDR:agentActions[2],
-      CDL:agentActions[0]
-    },
-  DDR:
-    {
-      DDL:agentActions[1],
-      DDR:agentActions[2],
-      DCL:agentActions[0]
-    },
-  DCL:
-    {
-      DCL:agentActions[1],
-      DCR:agentActions[2],
-      CCL:agentActions[0]
-    },
-  DCR:
-    {
-      DCL:agentActions[1],
-      DCR:agentActions[2],
-      DCR:agentActions[0]
-    },
-  CDL:
-    {
-      CDL:agentActions[1],
-      CDR:agentActions[2],
-      CDL:agentActions[0]
-    },
-  CDR:
-    {
-      CDL:agentActions[1],
-      CDR:agentActions[2],
-      CCR:agentActions[0]
-    },
-  CCL:
-    {
-      CCL:agentActions[1],
-      CCR:agentActions[2],
-      CCL:agentActions[0]
-    },
-  CCR:
-    {
-      CCL:agentActions[1],
-      CCR:agentActions[2],
-      CCR:agentActions[0]
-    }  
+# vacuumWorldDict={
+#   DDL:
+#     {
+#       DDL:agentActions[1],
+#       DDR:agentActions[2],
+#       CDL:agentActions[0]
+#     },
+#   DDR:
+#     {
+#       DDL:agentActions[1],
+#       DDR:agentActions[2],
+#       DCL:agentActions[0]
+#     },
+#   DCL:
+#     {
+#       DCL:agentActions[1],
+#       DCR:agentActions[2],
+#       CCL:agentActions[0]
+#     },
+#   DCR:
+#     {
+#       DCL:agentActions[1],
+#       DCR:agentActions[2],
+#       DCR:agentActions[0]
+#     },
+#   CDL:
+#     {
+#       CDL:agentActions[1],
+#       CDR:agentActions[2],
+#       CDL:agentActions[0]
+#     },
+#   CDR:
+#     {
+#       CDL:agentActions[1],
+#       CDR:agentActions[2],
+#       CCR:agentActions[0]
+#     },
+#   CCL:
+#     {
+#       CCL:agentActions[1],
+#       CCR:agentActions[2],
+#       CCL:agentActions[0]
+#     },
+#   CCR:
+#     {
+#       CCL:agentActions[1],
+#       CCR:agentActions[2],
+#       CCR:agentActions[0]
+#     }  
     
     
-}
+# }
 
 
-results=[dict(Suck=CDL,Left=DDL, Right=DDR),dict(Suck=DCR, Left=DDL, Right=DDR),dict(Suck=CCL, Left=DCL, Right=DCR),dict(Suck=DCR, Left=DCL, Right=DCR),dict(Suck=CDL, Left=CDL, Right=CDR),dict(Suck=CCR, Left=CDL, Right=CDR),dict(Suck=CCL, Left=CCL, Right=CCR),dict(Suck=CCR, Left=CCL, Right=CCR)]
+#results=[dict(Suck=CDL,Left=DDL, Right=DDR),dict(Suck=DCR, Left=DDL, Right=DDR),dict(Suck=CCL, Left=DCL, Right=DCR),dict(Suck=DCR, Left=DCL, Right=DCR),dict(Suck=CDL, Left=CDL, Right=CDR),dict(Suck=CCR, Left=CDL, Right=CDR),dict(Suck=CCL, Left=CCL, Right=CCR),dict(Suck=CCR, Left=CCL, Right=CCR)]
 
 #d1 = {}
 keyList = [DDL,DDR,DCL,DCR,CDL,CDR,CCL,CCR]
 
 
-def makeData():
-  d1 = {}
-  for i in range(len(keyList)):
-    d1[keyList[i]]=results[i]
-  return d1
+# def makeData():
+#   d1 = {}
+#   for i in range(len(keyList)):
+#     d1[keyList[i]]=results[i]
+#   return d1
 
 
 
