@@ -107,8 +107,13 @@ def vacuumStatesLocations():
   y = []
   n=len(keyList)
   for _ in range(n):
-    x.append(random.randint(0, n+1))
-    y.append(random.randint(0, n+1))
+    x.append(random.randint(0, n+1)+100)
+    y.append(random.randint(0, n+1)+100)
   zipped = zip(x, y)
   return dict(zip(keyList, zipped))
-  
+
+
+
+def getAction(dict):
+  edge_weights = {(k, v2) : k2 for k, v in dict.items() for k2, v2 in v.items()}#actions
+  return edge_weights
