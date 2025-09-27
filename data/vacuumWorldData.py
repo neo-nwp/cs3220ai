@@ -4,14 +4,24 @@ vacuumWorldStates=['Dirty','Clean']
 agenLocations=['Left','Right']
 agentActions=['Suck','Left','Right']
 
-DDL=(vacuumWorldStates[0],vacuumWorldStates[0],agenLocations[0])
-DDR=(vacuumWorldStates[0],vacuumWorldStates[0],agenLocations[1])
-DCL=(vacuumWorldStates[0],vacuumWorldStates[1],agenLocations[0])
-DCR=(vacuumWorldStates[0],vacuumWorldStates[1],agenLocations[1])
-CDL=(vacuumWorldStates[1],vacuumWorldStates[0],agenLocations[0])
-CDR=(vacuumWorldStates[1],vacuumWorldStates[0],agenLocations[1])
-CCL=(vacuumWorldStates[1],vacuumWorldStates[1],agenLocations[0])
-CCR=(vacuumWorldStates[1],vacuumWorldStates[1],agenLocations[1])
+# DDL=(vacuumWorldStates[0],vacuumWorldStates[0],agenLocations[0])
+# DDR=(vacuumWorldStates[0],vacuumWorldStates[0],agenLocations[1])
+# DCL=(vacuumWorldStates[0],vacuumWorldStates[1],agenLocations[0])
+# DCR=(vacuumWorldStates[0],vacuumWorldStates[1],agenLocations[1])
+# CDL=(vacuumWorldStates[1],vacuumWorldStates[0],agenLocations[0])
+# CDR=(vacuumWorldStates[1],vacuumWorldStates[0],agenLocations[1])
+# CCL=(vacuumWorldStates[1],vacuumWorldStates[1],agenLocations[0])
+# CCR=(vacuumWorldStates[1],vacuumWorldStates[1],agenLocations[1])
+
+
+DDL=''.join(map(lambda x: x[0],(vacuumWorldStates[0],vacuumWorldStates[0],agenLocations[0])))
+DDR=''.join(map(lambda x: x[0],(vacuumWorldStates[0],vacuumWorldStates[0],agenLocations[1])))
+DCL=''.join(map(lambda x: x[0],(vacuumWorldStates[0],vacuumWorldStates[1],agenLocations[0])))
+DCR=''.join(map(lambda x: x[0],(vacuumWorldStates[0],vacuumWorldStates[1],agenLocations[1])))
+CDL=''.join(map(lambda x: x[0],(vacuumWorldStates[1],vacuumWorldStates[0],agenLocations[0])))
+CDR=''.join(map(lambda x: x[0],(vacuumWorldStates[1],vacuumWorldStates[0],agenLocations[1])))
+CCL=''.join(map(lambda x: x[0],(vacuumWorldStates[1],vacuumWorldStates[1],agenLocations[0])))
+CCR=''.join(map(lambda x: x[0],(vacuumWorldStates[1],vacuumWorldStates[1],agenLocations[1])))
 
 vacuumWorld = (dict(
     DDL=dict(Suck=CDL,Left=DDL, Right=DDR),
