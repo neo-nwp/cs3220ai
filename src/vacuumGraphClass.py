@@ -3,6 +3,7 @@ from src.graphClass import Graph
 class vacuumGraph(Graph):
   def __init__(self, graph_dict=None,locations=None):
     #self.g=dict()
+    self.origin=graph_dict
     self.graph_dict = dict()
     #super().__init__(graph_dict)
     self.make_graph(graph_dict)
