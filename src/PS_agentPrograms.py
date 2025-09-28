@@ -42,6 +42,18 @@ def BestFirstSearchAgentProgram(f=None):
       return None
 
     return program
+  
+ 
+
+
+
+
+
+
+
+
+
+
 
 def BestFirstSearchAgentProgramForShow(f=None):
   #with BFS we choose a node, n, with minimum value of some evaluation function, f (n).
