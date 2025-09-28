@@ -67,6 +67,10 @@ class Environment:
         #thing.location = location if location is not None else self.default_location(thing)
         print(f"The Agent in {thing.state} with performance {thing.performance}")
         self.agents.append(thing)
+        
+       
+            
+          
 
   def delete_thing(self, thing):
     if thing in self.agents:

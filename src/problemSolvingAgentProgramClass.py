@@ -10,7 +10,7 @@ class SimpleProblemSolvingAgentProgram:
         self.performance=0
         self.alive=True
 
-  def __call__(self, percept):
+  def __call__(self, percept, curGoal=None):
         """Formulate a goal and problem, then
         search for a sequence of actions to solve it."""
         #4-phase problem-solving process
@@ -18,8 +18,24 @@ class SimpleProblemSolvingAgentProgram:
         self.state = self.update_state(self.state, percept)
         if not self.seq:
             goal = self.formulate_goal(self.state)
-            problem = self.formulate_problem(self.state, goal)
-            self.seq = self.search(problem)
+            
+            if isinstance(goal, list) and len(goal)>1:
+                  percept=self.state                         
+                  while len(self.goal)>0:
+                        #4-phase problem-solving process
+                        self.state = self.update_state(self.state, percept)
+                        current_goal=self.goal[0]
+                        goal = current_goal
+                        problem = self.formulate_problem(self.state, goal)
+                        self.seq.append (self.search(problem))
+                        percept=current_goal
+                        self.goal.remove(goal)
+            else:
+                  problem = self.formulate_problem(self.state, goal)
+                  self.seq = self.search(problem)                 
+                  
+                  
+                        
             if not self.seq:
                 return None
         else:
