@@ -18,9 +18,12 @@ class NavigationEnvironment(Environment):
     if agent.performance <= 0:
       agent.alive = False
       print("Agent {} is dead.".format(agent))
-    elif agent.state==agent.goal:
+    elif agent.state==agent.goal or len(agent.seq)==0:
       agent.alive = False
-      print(f"Agent reached the goal: {agent.goal}")
+      if len(agent.seq)==0:
+        print("Agent reached all goals")
+      else:
+        print(f"Agent reached the goal: {agent.goal}")
       
 
   def execute_action(self, agent, action):

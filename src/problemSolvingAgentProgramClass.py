@@ -15,7 +15,9 @@ class SimpleProblemSolvingAgentProgram:
         search for a sequence of actions to solve it."""
         #4-phase problem-solving process
         #print(0)
+        temp=self.state
         self.state = self.update_state(self.state, percept)
+        
         if not self.seq:
             goal = self.formulate_goal(self.state)
             
@@ -27,9 +29,10 @@ class SimpleProblemSolvingAgentProgram:
                         current_goal=self.goal[0]
                         goal = current_goal
                         problem = self.formulate_problem(self.state, goal)
-                        self.seq.append (self.search(problem))
+                        self.seq.extend (self.search(problem))
                         percept=current_goal
                         self.goal.remove(goal)
+                  self.state = temp
             else:
                   problem = self.formulate_problem(self.state, goal)
                   self.seq = self.search(problem)                 
