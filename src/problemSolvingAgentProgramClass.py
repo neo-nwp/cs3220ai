@@ -6,6 +6,9 @@ class SimpleProblemSolvingAgentProgram:
         to get to a particular state from the initial state(root)."""
         self.state = initial_state
         self.seq = []#solution.
+        
+        self.performance=0
+        self.alive=True
 
   def __call__(self, percept):
         """Formulate a goal and problem, then
@@ -19,7 +22,11 @@ class SimpleProblemSolvingAgentProgram:
             self.seq = self.search(problem)
             if not self.seq:
                 return None
-        return self.seq.pop(0)
+        else:
+              print("I have already don my work. Find someone else")
+              
+        #return self.seq.pop(0)
+        return None
 
   def update_state(self, state, percept):
         raise NotImplementedError
