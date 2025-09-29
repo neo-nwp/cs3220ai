@@ -49,8 +49,8 @@ def buildGraph(graphData, nodeColorsDict):
     # add the nodes
     g.add_nodes_from(nodes)
     for node in g:
-        node["color"]=nodeColorsDict[node]
-    
+        #node["color"]=nodeColorsDict[node]
+        node["color"]="white"
     # add the edges
     edges=[]
     for node_source in graphData.nodes():
