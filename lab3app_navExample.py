@@ -86,7 +86,7 @@ def main():
         st.header("_Initial Env._", divider=True)
         
         romaniaGraph = Graph(romaniaData)
-        nodeColors=makeDefaultColors(romaniaGraph)
+        nodeColors=makeDefaultColors(romaniaGraph.graph_dict)
         
         initState="Arad"
         goalState="Bucharest"
