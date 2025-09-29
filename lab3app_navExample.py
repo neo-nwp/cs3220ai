@@ -21,7 +21,7 @@ def drawBtn(e,a,c):
     st.button("Run One Agent's Step", on_click= AgentStep, args= [option])
     
 def AgentStep(opt):
-    
+    st.header("Resolving Romania Navigation Problem ...")
     e,a,c= opt[0],opt[1],opt[2]
     if not st.session_state["clicked"]:
         st.session_state["env"]=e
@@ -87,7 +87,7 @@ def makeDefaultColors(dictData):
 
 
 def main():
-    st.header("Problem Solving Agents: Romania Navigation Problem")
+    
         
     if "clicked" not in st.session_state:
         st.session_state["clicked"] = False
@@ -103,6 +103,7 @@ def main():
         
     if not st.session_state["clicked"]:
         # Set header title
+        st.header("Problem Solving Agents: Romania Navigation Problem")
         st.header("_Initial Env._", divider=True)
         
         romaniaGraph = Graph(romaniaData)
