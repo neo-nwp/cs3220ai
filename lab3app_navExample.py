@@ -21,8 +21,12 @@ def drawBtn(e,a,c):
     st.button("Run One Agent's Step", on_click= AgentStep, args= [option])
     
 def AgentStep(opt):
-    st.session_state["clicked"] = True
-    e,a,c= opt[0],opt[1],opt[2]    
+    
+    e,a,c= opt[0],opt[1],opt[2]
+    if not st.session_state["clicked"]:
+        st.session_state["env"]=e
+        st.session_state["agent"]=a
+        st.session_state["nodeColors"]=c    
     
     if e.is_agent_alive(a):
         e.step()
@@ -33,6 +37,8 @@ def AgentStep(opt):
         buildGraph(e.status, c) 
     else:
         st.error("Agent in location {} and it is dead.".format(a.state))
+        
+    st.session_state["clicked"] = True
         
     
         
@@ -83,6 +89,15 @@ def main():
     if "clicked" not in st.session_state:
         st.session_state["clicked"] = False
         
+    if "env" not in st.session_state:
+        st.session_state["env"]=None
+        
+    if "agent" not in st.session_state:
+        st.session_state["agent"]=None
+        
+    if "nodeColors" not in st.session_state:
+        st.session_state["nodeColors"]=None
+        
     if not st.session_state["clicked"]:
         # Set header title
         st.header("_Initial Env._", divider=True)
@@ -109,8 +124,9 @@ def main():
             
         
     if st.session_state["clicked"]:
-        st.warning("Agent Step Done!")
-        
+        #st.warning("Agent Step Done!")
+        st.success(" Agent is working...")
+       
     
     
     
