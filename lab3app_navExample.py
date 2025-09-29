@@ -31,12 +31,15 @@ def AgentStep(opt):
     if e.is_agent_alive(a):
         e.step()
         st.success(" Agent now at : {}.".format(a.state))
-        st.info("Current Agent performance:".format(a.performance))
+        st.info("Current Agent performance {}:".format(a.performance))
         c[a.state]="orange"
         st.info("State of the Environment:")
         buildGraph(e.status, c) 
     else:
-        st.error("Agent in location {} and it is dead.".format(a.state))
+        if a.state==a.goal:
+            st.success(" Agent now at the goal state: {}.".format(a.state))
+        else:
+            st.error("Agent in location {} and it is dead.".format(a.state))
         
     st.session_state["clicked"] = True
         
@@ -124,9 +127,10 @@ def main():
             
         
     if st.session_state["clicked"]:
-        #st.warning("Agent Step Done!")
-        st.success(" Agent is working...")
-        drawBtn(st.session_state["env"],st.session_state["agent"], st.session_state["nodeColors"])
+        if st.session_state["env"].is_agent_alive(st.session_state["agent"]):
+            #st.warning("Agent Step Done!")
+            st.success(" Agent is working...")
+            drawBtn(st.session_state["env"],st.session_state["agent"], st.session_state["nodeColors"])
        
     
     
