@@ -16,25 +16,25 @@ from src.naigationEnvironmentClass import NavigationEnvironment
 # from src.agents import RandomVacuumAgent
 
 
-def drawBtn(e,a):
-    option= [e,a]
+def drawBtn(e,a,c):
+    option= [e,a,c]
     st.button("Run One Agent's Step", on_click= AgentStep, args= [option])
     
 def AgentStep(opt):
     st.session_state["clicked"] = True
-    e,a= opt[0],opt[1]
+    e,a,c= opt[0],opt[1],opt[2]    
     
     if e.is_agent_alive(a):
-        stepActs=e.step()
-        st.success(" Agent decided to do: {}.".format(",".join(stepActs)))
-        st.success("RandomVacuumAgent is located at {} now.".format(a.location))
-        st.info("Current Agent performance: {}.".format(a.performance))
-        st.info("State of the Environment: {}.".format(e.status))
+        e.step()
+        st.success(" Agent now at : {}.".format(a.state))
+        st.info("Current Agent performance:".format(a.performance))
+        c[a.state]="orange"
+        st.info("State of the Environment:")
+        buildGraph(e.status, c) 
     else:
-        st.error("Agent in location {} and it is dead.".format(a.location))
+        st.error("Agent in location {} and it is dead.".format(a.state))
         
-    image=getImg(a.location, e.status)
-    st.image(image, caption="Agent is here", width="content")
+    
         
 def buildGraph(graphData, nodeColorsDict):
     netRomania = Network(
@@ -99,11 +99,12 @@ def main():
         re.add_thing(BFSnavAgent)
         st.header("State of the Environment", divider="red")
         nodeColors[BFSnavAgent.state]="red"
+        nodeColors[BFSnavAgent.goal]="green"
         buildGraph(romaniaGraph, nodeColors) 
-        st.info(f"The Agent: {BFSnavAgent.state} with performance {BFSnavAgent}.")
+        st.info(f"The Agent in: {BFSnavAgent.state} with performance {BFSnavAgent.performance}.")
         st.info(f"The Agent goal is: {BFSnavAgent.goal} .")
                 
-        #drawBtn(e1,a1)
+        drawBtn(re,BFSnavAgent,nodeColors)
     
             
         
