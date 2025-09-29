@@ -47,10 +47,12 @@ def buildGraph(graphData, nodeColorsDict):
     g = nx.Graph()
     
     # add the nodes
-    g.add_nodes_from(nodes)
-    for node in g:
-        #node["color"]=nodeColorsDict[node]
-        node['color']="white"
+    for node in nodes:
+        g.add_node(node, color=nodeColorsDict[node])
+    # g.add_nodes_from(nodes)
+    # for node in g:
+    #     #node["color"]=nodeColorsDict[node]
+    #     node['color']="white"
     # add the edges
     edges=[]
     for node_source in graphData.nodes():
