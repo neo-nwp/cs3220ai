@@ -22,7 +22,8 @@ def ReflexAgent() :
 
 
 def ReflexAgentA2pro():
-    pass
-    #your code here
+    from src.agentPrograms import ReflexAgentProgram, interpret_input_A2pro, rule_match_A2pro
+    from src.rules import a2proRules
+    return Agent(ReflexAgentProgram(a2proRules, interpret_input_A2pro, rule_match_A2pro))
   
 

@@ -1,5 +1,7 @@
 import random
 
+
+
 '''An idea of Random Agent Program is to choose an action at random, ignoring all percepts'''
 def RandomAgentProgram(actions):
    return lambda percept: random.choice(actions)

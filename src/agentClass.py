@@ -10,7 +10,7 @@ It's not supposed to do that: the program can only look at the percepts'''
 There is an optional slot, .performance, which is a number giving
 the performance measure of the agent in its environment.'''
 from src.thingClass import Thing
-
+from src.foodClass import Milk, Sausage
 import collections #we need collections.abc which provides abstract base classes that can be used to test whether a class provides a particular interface
 
 class Agent(Thing):
@@ -27,3 +27,20 @@ class Agent(Thing):
                 return eval(input('Percept={}; action? '.format(percept)))
 
         self.program = program
+
+class AgentCat(Agent):
+    def __init__(self, program=None):
+        super().__init__(program)
+        self.performance = 10  # Initial performance
+
+    def eat(self, food):
+        if isinstance(food, Milk):
+            self.performance += food.calories
+            print("Agent-Cat drinks milk!")
+        elif isinstance(food, Sausage):
+            self.performance += food.calories
+            print("Agent-Cat eats sausage!")
+        else:
+            print("Agent-Cat can't eat this!")
+
+        self.performance -= 1  # Consuming also costs a little energy
