@@ -1,3 +1,14 @@
-App's link for the Romania Navigation Agent
+For task1 files::
+ src/fwgcproblemClass.py
+ src/fwgcproblemsolvingagent.py
+ lab3_task1.py
+ lab3_task1_app.py
+ 
+ to run: streamlit run task3_lab1_app.py 
 
-https://cs3220fall2025-lab3example.streamlit.app/
+ For task2 files::
+ src/maze_data.py
+ src/treasure_maze.py
+ app.py
+
+ to run: streamlit run app.py
